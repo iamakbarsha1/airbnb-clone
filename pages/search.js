@@ -3,14 +3,15 @@ import Header from "../components/Header";
 import { useRouter } from "next/dist/client/router"; //react router
 import moment from "moment"; //moment.js
 import InfoCard from "../components/InfoCard";
+import Map from "../components/Map";
 
-function Search({ searchesults }) {
+function Search({ searchResults }) {
    const router = useRouter();
    // ES6 Destructuring
    const { location, startDate, endDate, noOfGuests } = router.query;
 
-   const formattedStartDate = moment(startDate).format("LL");
-   const formattedEndDate = moment(endDate).format("LL");
+   const formattedStartDate = moment(startDate).format("ll");
+   const formattedEndDate = moment(endDate).format("ll");
    const range = `${formattedStartDate} - ${formattedEndDate}`
 
    console.log(router.query);
@@ -20,10 +21,10 @@ function Search({ searchesults }) {
          <Header placeholder={`${location} | ${range} | ${noOfGuests} guests`} />
 
          <main className="flex">
-            <section className="flex-grow pt-16 px-6">
-               <p className=" text-lg">300+ stays - {range} - for {noOfGuests} Guests </p>
+            <section className="flex-grow py-4 px-3 md:pt-12 md:px-6 mb-4">
+               <p className=" text-xs md:text-xs lg:text-sm ">300+ stays · {range} · {noOfGuests} Guests </p>
 
-               <h1 className="font-bold text-5xl text-gray-800 mt-2 mb-6 ">Stays in {location}</h1>
+               <h1 className="font-bold text-xl md:text-3xl lg:text-3xl text-gray-800 mt-1 mb-3 md:mt-2 md:mb-6 ">Stays in {location}</h1>
 
                <div className="hidden lg:inline-flex mb-6 font-medium space-x-3 text-gray-800 whitespace-nowrap">
                   <p className="button">Cancellation Flexibility</p>
@@ -33,8 +34,8 @@ function Search({ searchesults }) {
                   <p className="button">More filters</p>
                </div>
 
-               <div className="flex flex-col">
-                  {searchesults.map(({ img, location, title, description, star, price, total }) => (
+               <div className="flex flex-col ">
+                  {searchResults.map(({ img, location, title, description, star, price, total }) => (
                      <InfoCard
                         key={img}
                         img={img}
@@ -50,6 +51,11 @@ function Search({ searchesults }) {
                </div>
 
             </section>
+
+            <section className="hidden lg:inline-flex xl:min-w-[600px]">
+               <Map searchResults={searchResults} className="" />
+            </section>
+
          </main>
 
          <Footer />
@@ -60,13 +66,13 @@ function Search({ searchesults }) {
 export default Search;
 
 export async function getServerSideProps() {
-   const searchesults = await fetch("https://links.papareact.com/isz").then(
+   const searchResults = await fetch("https://links.papareact.com/isz").then(
       res => res.json()
    );
 
    return {
       props: {
-         searchesults,
+         searchResults,
       },
    };
 }

@@ -2,6 +2,6 @@
 
 @layer components {
    .button {
-      @apply px-4 py-2 border rounded-full text-lg hover:shadow-lg cursor-pointer active:scale-95 active:bg-gray-100 transition transform duration-100 ease-out hover:border-gray-500
+      @apply px-4 py-2 border rounded-full lg:text-sm hover:shadow-lg cursor-pointer active:scale-95 active:bg-gray-100 transition transform duration-100 ease-out hover:border-gray-300
    }
 }

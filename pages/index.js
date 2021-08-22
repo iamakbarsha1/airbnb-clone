@@ -15,10 +15,10 @@ export default function Home({ exploreData, cardsData }) {
       </Head>
 
       {/* Header */}
-      <Header />
+      <Header className="" />
 
       {/* Banner */}
-      <Banner />
+      <Banner clasName="" />
 
       {/* Main */}
       <main className="max-w-7xl mx-auto px-8 sm:px-16 shadow-lg mb-8">
