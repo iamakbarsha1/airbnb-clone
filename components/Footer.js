@@ -44,7 +44,7 @@ function Footer() {
             </div>
 
          </div>
-         <div className="grid grid-cols-1 md:grid-cols-2 px-10 py-8 space-y-4 ">
+         <div className="grid grid-cols-1 md:grid-cols-2 px-10 py-8 lg:px-32 lg:py-14 space-y-4 ">
 
             <div className="flex flex-col space-y-4">
                <div className="">
