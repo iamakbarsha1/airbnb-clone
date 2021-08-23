@@ -1,4 +1,9 @@
+import { useRouter } from "next/dist/client/router"
+
 function Footer() {
+
+   const router = useRouter();
+
    return (
       <div>
          <div className=" gap-y-10 lg:px-32 lg:py-14 px-10 py-8 grid grid-cols-1 md:grid-cols-4 bg-gray-100 mb-5">
@@ -43,32 +48,44 @@ function Footer() {
 
             <div className="flex flex-col space-y-4">
                <div className="">
+                  <p className="font-semibold">Airbnb Clone</p>
                   <p className="">
                      Developed by <b className="font-semibold">Akbar Sha S</b>
                   </p>
                </div>
-               <div className="flex items-center ">
-                  <img
-                     className="h-5 cursor-pointer  active:scale-75 transition duration-100 ease-out"
-                     src="https://www.logolynx.com/images/logolynx/s_03/037e982f03022600db4fb8f35ad7ff7c.png"
+
+               <div className="flex">
+                  <a href="https://github.com/iamakbarsha1"
+                     target="_blank"
                   >
-                  </img>
+                     <img
+                        className="h-6 mr-2 cursor-pointer active:scale-75 transition duration-100 ease-out"
+                        src="https://image.flaticon.com/icons/png/128/2111/2111432.png"
+
+                     >
+                     </img>
+                  </a>
                </div>
                <div className="flex">
-                  <img
-                     className="h-5 cursor-pointer active:scale-75 transition duration-100 ease-out"
-                     src="https://www.logolynx.com/images/logolynx/s_4e/4e5a8511bd51201aa77edcc263ca4ae1.png"
+
+                  <a href="https://www.linkedin.com/in/akbar-sha-s-b9b2191a8/"
+                     target="_blank"
                   >
-                  </img>
+                     <img className="h-6 mr-2 cursor-pointer active:scale-75 transition duration-100 ease-out"
+                        src="https://image.flaticon.com/icons/png/128/174/174857.png"
+                     >
+                     </img>
+                  </a>
+
                </div>
             </div>
 
             <div className="flex flex-col space-y-4">
                <div className="flex font-semibold">
-                  <p>iamakbarsha1@gmail.com</p>
+                  <a href="mailto:iamakbarsha1@gmail.com" target="_blank">Send e-mail</a>
                </div>
                <div className="flex font-semibold">
-                  <p>+91 99-4178-6918</p>
+                  <a href="tel:+919941786918">+91 99-4178-6918</a>
                </div>
                <div className="flex font-semibold">
                   <p>Royapettah, Chennai, India.</p>
