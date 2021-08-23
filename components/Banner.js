@@ -13,7 +13,7 @@ function Banner() {
 
          <div className="absolute top-1/2 w-full text-center ">
             <p className=" text-lg font-semibold ">Not sure where to go?<br></br>Perfect. </p>
-            <button className="text-transparent bg-clip-text bg-gradient-to-r from-blue-800  to-pink-500 my-3 px-10 py-4 rounded-full cursor-pointer font-bold shadow-md hover:shadow-xl active:scale-90 transition duration-150 outline-none
+            <button className="md:text-transparent text-red-400 bg-white md:border md:bg-clip-text md:bg-gradient-to-r md:from-blue-800  md:to-pink-500 mt-1 md:my-3 px-4 md:px-10 py-2 md:py-4 rounded-full cursor-pointer font-bold shadow-md hover:shadow-xl active:scale-90 transition duration-150 
             ">I'm flexible</button>
          </div>
 
