@@ -11,6 +11,7 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range'; // DatePicker
 import { useRouter } from "next/dist/client/router";
+import Dropdown from "./Dropdown";
 
 function Header({ placeholder }) {
 
@@ -95,7 +96,7 @@ function Header({ placeholder }) {
 
             <div className="flex items-center justify-center flex-grow cursor-pointer">
                <input
-                  value={searchInput}
+                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
                   className=" bg-transparent flex-grow outline-none text-base md:text-base text-gray-600 placeholder-gray-600 focus:placeholder-gray-400 cursor-pointer" type="text" placeholder={placeholder || "Where are you going?"} />
 
@@ -106,18 +107,16 @@ function Header({ placeholder }) {
 
          {/* Right */}
          <div className="flex items-center space-x-4 justify-end">
-            <p className="hidden lg:inline">Become a host</p>
+            <p className="hidden lg:inline p-2 px-3 font-medium rounded-full cursor-pointer text-gray-600 hover:text-gray-900 hover:bg-gray-200">Become a host</p>
             <div className="hidden md:inline">
                <div className="flex items-center animate-bounce space-x-2 rounded-full p-2 hover:bg-gray-300 ">
-                  <GlobeAltIcon className="h-6 text-sm cursor-pointer text-gray-500 " />
+                  <GlobeAltIcon className="h-6 text-sm cursor-pointer text-gray-500 hover:text-gray-900" />
 
                </div>
             </div>
             <div className="hidden md:inline">
-               <div className="flex items-center space-x-2 border-2 rounded-full p-2 hover:bg-gray-300  ">
-                  <MenuIcon className=" h-6 text-sm rounded-full cursor-pointer text-gray-500 hover:text-white" />
-                  <UserCircleIcon className=" h-6 text-sm rounded-full cursor-pointer text-gray-500 hover:text-white" />
-               </div>
+               <Dropdown />
+               
             </div>
          </div>
 
