@@ -2,9 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "cd airbnb-clone && next build",
-    "install-airbnbclone": "cd airbnb-clone && npm run build",
-    "heroku-postbuild": "npm run install-airbnbclone && npm run build",
+    "build": "next build",
     "start": "next start",
     "client": "npm run dev",
     "fly": "concurrently -n 'server,client' -c 'yellow,green' \"nodemon server.js\" \"npm run client\""

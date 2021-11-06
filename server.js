@@ -53,9 +53,9 @@ app.use(morgan('tiny'));
 app.use('/api', routes);
 
 //step 3 - process.env.NODE_ENV === "production" 
-if(process.env.NODE_ENV === "production") {
-   app.use(express.static(".next"))
-}
+// if(process.env.NODE_ENV === "production") {
+//    app.use(express.static(".next"))
+// }
 
 app.listen(PORT, console.log(`Server is running at : ${PORT}`));
 
