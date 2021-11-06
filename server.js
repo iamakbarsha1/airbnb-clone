@@ -12,7 +12,6 @@ const routes = require('./Backend/routes/api')
 const app = express();
 const PORT = process.env.PORT || 8080; // step 1 - port can be changed
 
-const uri = "mongodb+srv://demo:akbarsha@cluster0.b9cc1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 // connecting mongoose / mongodb
 // step 2 - process.env.MONGODB_URI
