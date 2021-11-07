@@ -9,14 +9,15 @@ const BlogPost = require('./Backend/models/blogPost');
 // const BlogPost = require('../Backend/models/blogPost');
 const routes = require('./Backend/routes/api')
 
+
 const app = express();
 const PORT = process.env.PORT || 8080; // step 1 - port can be changed
 
 
+
 // connecting mongoose / mongodb
 // step 2 - process.env.MONGODB_URI
-mongoose.connect(process.env.MONGODB_URI ||
-    'mongodb://localhost/mern_youtube', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mern_youtube', {
    useNewUrlParser: true,
    useUnifiedTopology: true
 });
