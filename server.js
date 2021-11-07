@@ -14,12 +14,12 @@ const app = express();
 const PORT = process.env.PORT || 8080; // step 1 - port can be changed
 
 
-
 // connecting mongoose / mongodb
 // step 2 - process.env.MONGODB_URI
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mern_youtube', {
    useNewUrlParser: true,
-   useUnifiedTopology: true
+   useUnifiedTopology: true,
+   useCreateIndex: true
 });
 
 // Used to check whether mongoose is connected or not

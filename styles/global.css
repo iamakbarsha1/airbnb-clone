@@ -8,6 +8,6 @@
     @apply outline-none cursor-pointer pl-4 py-1 focus:bg-red-400 rounded-lg;
   }
   .form-input {
-    @apply flex space-x-6 p-3 font-semibold;
+    @apply lg:flex lg:space-x-6 p-2 lg:p-3 font-semibold;
   }
 }

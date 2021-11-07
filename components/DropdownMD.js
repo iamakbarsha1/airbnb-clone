@@ -17,8 +17,8 @@ function Dropdown() {
       <DropdownMenu.Root>
          <DropdownMenu.Trigger className="outline-none ">
          <div className="group flex items-center space-x-2 border-2 rounded-full p-2 focus:shadow-lg hover:shadow-lg">
-                  <MenuIcon className=" h-6 text-sm rounded-full cursor-pointer text-gray-500 group-hover:text-gray-900" />
-                  <UserCircleIcon className=" h-6 text-sm rounded-full cursor-pointer text-gray-500 group-hover:text-gray-900" />
+                  <MenuIcon className="h-6 text-sm rounded-full cursor-pointer text-gray-500 group-hover:text-gray-900" />
+                  <UserCircleIcon className="h-6 text-sm rounded-full cursor-pointer text-gray-500 group-hover:text-gray-900" />
                </div>
          </DropdownMenu.Trigger>
       
