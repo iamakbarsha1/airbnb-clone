@@ -19,7 +19,6 @@ const PORT = process.env.PORT || 8080; // step 1 - port can be changed
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mern_youtube', {
    useNewUrlParser: true,
    useUnifiedTopology: true,
-   useCreateIndex: true
 });
 
 // Used to check whether mongoose is connected or not
@@ -32,9 +31,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Saving our data to mongodb
+
 // const data = {
 //    firstname: "",
-//    lastname: ""
+//    lastname: "",
+//    email: "",
+//    username: "",
+//    password: ""
 // };
 
 // const newBlogPost = new BlogPost(data); //instance of Model

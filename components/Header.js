@@ -124,7 +124,7 @@ function Header({ placeholder }) {
             </div>
 
             {/* Dropdown shows login/signup */}
-            <div className="">
+            <div className="md:hidden">
                <DropdownSM />
             </div>
          </div>

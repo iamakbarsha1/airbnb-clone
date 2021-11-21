@@ -14,13 +14,13 @@ function signup() {
    const [username, setUsername] = useState("");
    const [password, setPassword] = useState("");
 
-   // calling th function getBlogPost
+   // calling th function getUserRegister
    const componentDidMount = () => {
-      getBlogPost();
+      getUserRegister();
    };
 
    // calling the msg for updated data from Database
-   const getBlogPost = () => {
+   const getUserRegister = () => {
       axios.get('http://localhost:8080/api')
       .then((response) => {
          const data = response.data;
@@ -60,12 +60,12 @@ function signup() {
       const payload = {
          firstname: firstname,
          lastname: lastname,
-         emali: email,
+         email: email,
          username: username,
          password: password
       };
       axios({
-         url: 'http://localhost:8080/api/save',
+         url: "http://localhost:8080/api/save",
          method: "POST",
          data: payload
       })
@@ -76,7 +76,7 @@ function signup() {
          })
          .catch(() => {
             console.log("server error");
-         });;
+         });
    };
 
    // reset the inputs entered by the user
@@ -89,24 +89,24 @@ function signup() {
    };
 
    // should display the user inputs under the signup area
-   const displayBlogPost = (posts) => {
-      if (!posts) return null;
+   // const displayBlogPost = (posts) => {
+   //    if (!posts) return null;
 
-      return posts.map((post, _id) => {
-         // console.log(post);
-            return(
-               <div key={_id}>
-                  <h4>{post.firstname}</h4>
-                  <h4>{post.lastname}</h4>
-               </div>
-            )
-         });
-   };
+   //    return posts.map((post, _id) => {
+   //       // console.log(post);
+   //          return(
+   //             <div key={_id}>
+   //                <h4>{post.firstname}</h4>
+   //                <h4>{post.lastname}</h4>
+   //             </div>
+   //          )
+   //       });
+   // };
     
-       console.log("State: ", state);
+   console.log("State: ", state);
 
-      return(
-         <>
+   return(
+   <>
          {/*  */}
          <div className="bg-gray-100 px-5 py-5 lg:py-28 lg:px-72 h-full h-screen w-full">
             <div className="p-5 lg:p-10 md:p-10 border-2 rounded-lg bg-white">
