@@ -5,8 +5,38 @@ import SmallCard from '../components/SmallCard';
 import MediumCard from '../components/MediumCard';
 import LargeCard from '../components/LargeCard';
 import Footer from '../components/Footer';
+import { useRouter } from 'next/dist/client/router';
+import { useEffect } from 'react/cjs/react.development';
+import jwt from 'jsonwebtoken';
+// import useHistory from "react-router-dom";
 
 export default function Home({ exploreData, cardsData }) {
+
+  const router = useRouter();
+  const indexPage = () => {
+    router.push({
+      pathname: "/",
+    });
+  };
+  const login = () => {
+    router.push({
+       pathname: "/login",
+    });
+  };
+
+  // const history = useHistory();
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if(token) {
+      const user = jwt.decode(token);
+      if(!user) {
+        localStorage.removeItem('token');
+        router.push(indexPage);
+        // history.replace(login);
+      }
+    }
+  }, [])
+
   return (
     <div className="">
       <Head>

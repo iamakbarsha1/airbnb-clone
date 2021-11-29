@@ -1,28 +1,96 @@
 import { useRouter } from "next/dist/client/router";
-import React from "react";
+import React, { useState } from "react";
+import Image from 'next/image';
+import axios from 'axios';
 
 function login() {
 
    const router = useRouter();
+   const indexPage = () => {
+      router.push({
+        pathname: "/",
+      });
+    };
+   const login = () => {
+      router.push({
+         pathname: "/login",
+      });
+   };
+   const signup = () => {
+      router.push({
+         pathname: "/signup",
+      });
+   };
+
+   const [state, setState] = useState("");
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
 
    const resetUserInputs = () => {
       setEmail("");
       setPassword("");
+   };   
+
+   const loginUser = (event) => {
+      event.preventDefault();
+      const payload = {
+         email: email,
+         password: password
+      };
+      
+      axios({
+         url: "http://localhost:8080/api/user/login",
+         method: "POST",
+         // headers: {
+         //    'Content-type': 'application/json'
+         // },
+         // dataType: 'json',
+         body: JSON.stringify({
+            email,
+            password,
+         }),
+         data: payload,
+      })
+         .then(() => {
+            console.log("Data has been sent to the server");
+            resetUserInputs();
+            componentDidMount();
+            // if(data.user) {
+            //    alert('Login Successfull');
+            //    window.location.href = indexPage;
+            // } else {
+            //    alert('Please check your e-mail and password')
+            // }
+         })
+         .catch(() => {
+            console.log("server error");
+         });
+         // const data = await response.json();
    };
 
-   const email 
+   // calling th function getUserRegister
+   const componentDidMount = () => {
+      getUserLogin();
+   };
 
-   const submit = (event) => {
-
-   }
+   // calling the msg for updated data from Database
+   const getUserLogin = () => {
+      axios.get('http://localhost:8080/api')
+      .then((response) => {
+         const data = response.data;
+         setState({ posts: data });
+         console.log("Data has been  Received !!");
+      })
+      .catch(() => {
+         alert("Error receiving data");
+      });
+   };
 
    return(
       <div>
          {/*  */}
-         <div className="bg-gray-100 px-5 py-5 lg:py-28 lg:px-72 h-full h-screen w-full">
-            <div className="p-5 lg:p-10 md:p-10 border-2 rounded-lg bg-white">
+         <div className="bg-white px-5 py-5 lg:py-28 lg:px-72 h-full h-screen w-full">
+            <div className="p-5 lg:p-10 md:p-10 border-2 rounded-lg bg-gray-100">
                <div className=" flex items-center justify-between">
                      {/* Big-Logo only in large screen */}
                      {/* router */}
@@ -38,21 +106,21 @@ function login() {
                      </div>
                
                      <div>
-                        <h1 className="font-bold text-xl lg:text-3xl text-red-500 text-opacity-95 border-r-2 px-4 border-red-500 border-opacity-95">Log in Page</h1>
+                        <h1 className="font-bold text-xl lg:text-3xl text-red-500 text-opacity-95 border-r-2 px-4 border-red-500 border-opacity-95">Log in</h1>
                      </div>
                </div> 
                   {/* Form  */}
                   <div className="flex justify-center py-5">
-                     <form onSubmit={submit} className="py-2">
+                     <form onSubmit={loginUser} className="py-2">
                         <div className="form-input">
-                           <p className="text-sm lg:text-base text-gray-700 lg:mr-7">E-mail :</p>
+                           <p className="text-sm py-1 lg:text-base text-gray-700 lg:mr-7">E-mail :</p>
                            <input
-                                 className="border text-xl mt-1 lg:mt-0 lg:text-base ring ring-transparent outline-none px-2"
+                                 className="border text-xl mt-1 lg:mt-0 lg:text-base ring ring-transparent outline-none py-1 px-2"
                                  type="text"
                                  name="email"
                                  placeholder="abc@example.com"
                                  value={email}
-                                 onChange={Email} />
+                                 onChange={(e) => setEmail(e.target.value)} />
                         </div>
                         {/* <div className="form-input">
                            <p className="text-sm lg:text-base text-gray-700">Username :</p>
@@ -65,25 +133,26 @@ function login() {
                                  onChange={Username} />
                         </div> */}
                         <div className="form-input">
-                           <p className="text-sm lg:text-base text-gray-700">Password :</p>
+                           <p className="text-sm py-1 lg:text-base text-gray-700">Password :</p>
                            <input
-                                 className="border text-xl mt-1 lg:mt-0 lg:text-base ring ring-transparent outline-none px-2"
+                                 className="border text-xl mt-1 lg:mt-0 lg:text-base ring ring-transparent outline-none py-1 px-2"
                                  type="password"
                                  name="password"
                                  placeholder="Password"
                                  value={password}
-                                 onChange={Password} />
+                                 onChange={(e) => setPassword(e.target.value)} />
                         </div>
                         <div className="p-3">
-                           <button type="submit" className="float-right font-semibold bg-red-500 bg-opacity-90 text-gray-50 py-2 px-4 rounded-lg border-2 border-red-500 border-opacity-95">Submit</button>
+                           <button type="submit" className="float-right font-semibold bg-red-500 bg-opacity-90 text-gray-50 py-2 px-4 rounded-lg border-2 border-red-500 border-opacity-95">Log in</button>
                         </div>
                      </form>
-                  </div>   
+                  </div> 
+                  <div className="md:ml-56 ml-24 md:block">
+                              Already Registered ?<div className="cursor-pointer underline text-blue-600" onClick={signup}>Signup</div>  here
+            </div>  
                </div>
-               
-               {/* <div className="blogpost">
-                {displayBlogPost(state.posts)} }
-   </div> */}
+
+                          
 
          </div>
       </div>

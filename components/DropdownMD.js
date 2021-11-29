@@ -12,6 +12,12 @@ function Dropdown() {
       });
    };
    
+   const login = () => {
+      router.push({
+         pathname: "/login",
+      });
+   };
+
    return (
       <div>
       <DropdownMenu.Root>
@@ -24,7 +30,7 @@ function Dropdown() {
       
          <DropdownMenu.Content loop className="absolute top-1 -left-1 w-52 bg-white pl-1 pr-1 py-2 rounded-lg">
             <DropdownMenu.Item className="item" onClick={signup}>Sign up</DropdownMenu.Item>
-            <DropdownMenu.Item className="item">Log in</DropdownMenu.Item>
+            <DropdownMenu.Item className="item" onClick={login}>Log in</DropdownMenu.Item>
             <DropdownMenu.Separator className="border border-b-1 my-2" />
             <DropdownMenu.Item className="item">Host your home</DropdownMenu.Item>
             <DropdownMenu.Item className="item">Host an experience</DropdownMenu.Item>

@@ -10,7 +10,7 @@ const UserSchema = new Schema(
       password: { type: String, required: true }
    },
    {
-      collection: "user-data"
+      collection: "User-Login"
    }
 );
 

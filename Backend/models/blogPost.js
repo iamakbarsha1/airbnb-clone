@@ -22,7 +22,7 @@ const BlogPostSchema = new Schema({
    }
 },
 {
-   collection: "blogposts"
+   collection: "User-Register"
 });
 
 // Model

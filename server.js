@@ -13,10 +13,13 @@ const routes = require('./Backend/routes/api')
 const app = express();
 const PORT = process.env.PORT || 8080; // step 1 - port can be changed
 
+const MONGODB_URI = "mongodb+srv://admin:akbarsha@cluster0.b9cc1.mongodb.net/AirbnbDB?retryWrites=true&w=majority";
 
 // connecting mongoose / mongodb
 // step 2 - process.env.MONGODB_URI
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mern_youtube', {
+// 'mongodb://localhost/mern_youtube'
+
+mongoose.connect(MONGODB_URI , {
    useNewUrlParser: true,
    useUnifiedTopology: true,
 });
@@ -39,10 +42,7 @@ app.use(express.urlencoded({ extended: false }));
 //    username: "",
 //    password: ""
 // };
-
 // const newBlogPost = new BlogPost(data); //instance of Model
-
-
 // newBlogPost.save((error) => {
 //    if(error) {
 //       console.log("Oops! Error Occured");
@@ -50,6 +50,37 @@ app.use(express.urlencoded({ extended: false }));
 //       console.log("data has been Saved !");
 //    }
 // });
+
+app.post('/user/register', async (req,res) => {
+   console.log(req.body)
+   try {
+      await BlogPost.create({
+         firstname: req.body.firstname,
+         lastname: req.body.lastname,
+         email: req.body.email,
+         username: req.body.username,
+         password: req.body.password,
+      })
+      res.json({ status: 'ok' });
+   } catch(err) {
+      console.log(err);
+      res.json({ status: "error" });
+   }
+});
+
+app.get('/user/login', async (req,res) => {
+   const user = await BlogPost.findOne({
+      username: req.body.username,
+      password: req.body.password,
+   })
+   if (user) {
+      res.json({ status: 'ok', user: true });
+   }
+   else {
+      res.json({ status: "error", user: false });
+   }
+});
+
 
 app.use(cors());
 // Http request logger

@@ -2,6 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const BlogPost = require('../models/blogPost');
+const jwt = require('jsonwebtoken');
 
 // Routes
 router.get('/', (req,res) => {
@@ -37,6 +38,47 @@ router.post('/save', (req,res) => {
          });
    });
 });
+
+// User Register route
+router.post('/user/register', async (req,res) => {
+   console.log(req.body)
+   try {
+      await BlogPost.create({
+         firstname: req.body.firstname,
+         lastname: req.body.lastname,
+         email: req.body.email,
+         username: req.body.username,
+         password: req.body.password,
+      })
+      res.json({ status: 'ok' });
+   } catch(err) {
+      console.log(err);
+      res.json({ status: "error" });
+   }
+});
+
+// User Login route
+router.get('/user/login', async (req,res) => {
+   const user = await BlogPost.findOne({
+      email: req.body.email,
+      password: req.body.password,
+   })
+   if (user) {
+
+      const token = jwt.sign(
+         {
+            firstname: user.name,
+            email: user.email,
+         },
+         'secret123' 
+      )
+      res.json({ status: 'ok', user: token });
+   }
+   else {
+      res.json({ status: "error", user: false });
+   }
+});
+
 
 router.get('/name', (req,res) => {
    const data = {

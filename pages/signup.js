@@ -2,10 +2,16 @@ import React, {useState} from 'react';
 import axios from "axios"; 
 import { useRouter } from "next/dist/client/router";
 import Image from "next/image";
+import login from './login';
 
 
 function signup() {
    const router = useRouter();
+   const login = () => {
+      router.push({
+         pathname: '/login',
+      });
+   };
 
    let [state,setState] = useState("");
    const [firstname, setFirstname] = useState("");
@@ -55,7 +61,7 @@ function signup() {
       setPassword(event.target.value)
    };
 
-   const submit = (event) => {
+   const registerUser = (event) => {
       event.preventDefault();
       const payload = {
          firstname: firstname,
@@ -65,7 +71,7 @@ function signup() {
          password: password
       };
       axios({
-         url: "http://localhost:8080/api/save",
+         url: "http://localhost:8080/api/user/register",
          method: "POST",
          data: payload
       })
@@ -108,8 +114,8 @@ function signup() {
    return(
    <>
          {/*  */}
-         <div className="bg-gray-100 px-5 py-5 lg:py-28 lg:px-72 h-full h-screen w-full">
-            <div className="p-5 lg:p-10 md:p-10 border-2 rounded-lg bg-white">
+         <div className="bg-white px-5 py-5 lg:py-28 lg:px-72 h-full h-screen w-full">
+            <div className="p-5 lg:p-10 md:p-10 border-2 rounded-lg bg-gray-100">
                <div className=" flex items-center justify-between">
                      {/* Big-Logo only in large screen */}
                      {/* router */}
@@ -126,17 +132,17 @@ function signup() {
                      </div>
                
                      <div>
-                        <h1 className="font-bold text-xl lg:text-3xl text-red-500 text-opacity-95 border-r-2 px-4 border-red-500 border-opacity-95">Sign up Page</h1>
+                        <h1 className="font-bold text-xl lg:text-3xl text-red-500 text-opacity-95 border-r-2 px-4 border-red-500 border-opacity-95">Sign up</h1>
                      </div>
 
                </div> 
                       {/* Form  */}
-                     <div className="flex justify-center py-5">
-                        <form onSubmit={submit} className="py-2">
+                     <div className="flex items-center justify-center py-5">
+                        <form onSubmit={registerUser} className="py-2">
                            <div className="form-input">
                               <p className="text-sm lg:text-base text-gray-700">First Name :</p>
                               <input
-                                 className="border text-xl mt-1 lg:mt-0 lg:text-base ring ring-transparent outline-none px-2"
+                                 className="border text-xl mt-1 lg:mt-0 lg:text-base ring-2 ring-transparent focus-visible:ring-red-400 outline-none px-2"
                                  type="text"
                                  name="firstname"
                                  placeholder="Akbar Sha"
@@ -184,17 +190,16 @@ function signup() {
                                  onChange={Password} />
                            </div>
                            <div className="p-3">
-                              <button type="submit" className="float-right font-semibold bg-red-500 bg-opacity-90 text-gray-50 py-2 px-4 rounded-lg border-2 border-red-500 border-opacity-95">Submit</button>
+                              <button type="submit" className="float-right font-semibold bg-red-500 bg-opacity-90 text-gray-50 py-2 px-4 rounded-lg border-2 border-red-500 border-opacity-95">Register</button>
                            </div>
                         </form>
+                           
+                     </div>
+                     <div className="md:ml-56 ml-24 md:block">
+                              Already Registered ?<div className="cursor-pointer underline text-blue-600" onClick={login}>Login</div>  here
                      </div>
                   
             </div>
-               
-               <div className="blogpost">
-                  {/* {displayBlogPost(state.posts)} */}
-               </div>
-
          </div>
          </>
       )
