@@ -51,10 +51,10 @@ app.use(express.urlencoded({ extended: false }));
 //    }
 // });
 
-app.post('/user/register', async (req,res) => {
+app.post('/register', (req,res) => {
    console.log(req.body)
    try {
-      await BlogPost.create({
+      BlogPost.create({
          firstname: req.body.firstname,
          lastname: req.body.lastname,
          email: req.body.email,
@@ -68,13 +68,21 @@ app.post('/user/register', async (req,res) => {
    }
 });
 
-app.get('/user/login', async (req,res) => {
-   const user = await BlogPost.findOne({
+app.post('/login', (req,res) => {
+   const user = BlogPost.findOne({
       username: req.body.username,
       password: req.body.password,
    })
    if (user) {
-      res.json({ status: 'ok', user: true });
+
+      const token = jwt.sign({
+            firstname: user.name,
+            email: user.email,
+         },
+         'secret123' 
+      )
+
+      res.json({ status: 'ok', user: token });
    }
    else {
       res.json({ status: "error", user: false });

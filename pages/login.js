@@ -38,12 +38,13 @@ function login() {
          password: password
       };
       
-      axios({
-         url: "http://localhost:8080/api/user/login",
+      const response = axios({
+         url: "http://localhost:8080/api/login",
          method: "POST",
-         // headers: {
-         //    'Content-type': 'application/json'
-         // },
+         headers: {
+            Accept: "application/json",
+            'Content-type': 'application/json',
+         },
          // dataType: 'json',
          body: JSON.stringify({
             email,
@@ -66,6 +67,17 @@ function login() {
             console.log("server error");
          });
          // const data = await response.json();
+         
+         
+         
+         // const data = response.json();
+
+         // if(data.user) {
+         //    alert('Login Successful');
+         //    router.push("/"); route to Home page
+         // } else {
+         //    alert('Please check your email and password');
+         // }
    };
 
    // calling th function getUserRegister
@@ -148,7 +160,7 @@ function login() {
                      </form>
                   </div> 
                   <div className="md:ml-56 ml-24 md:block">
-                              Already Registered ?<div className="cursor-pointer underline text-blue-600" onClick={signup}>Signup</div>  here
+                              New User ?<div className="cursor-pointer underline text-blue-600" onClick={signup}>Signup</div>  here
             </div>  
                </div>
 

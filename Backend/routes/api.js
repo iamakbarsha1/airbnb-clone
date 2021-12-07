@@ -40,10 +40,10 @@ router.post('/save', (req,res) => {
 });
 
 // User Register route
-router.post('/user/register', async (req,res) => {
+router.post('/register', (req,res) => {
    console.log(req.body)
    try {
-      await BlogPost.create({
+      BlogPost.create({
          firstname: req.body.firstname,
          lastname: req.body.lastname,
          email: req.body.email,
@@ -58,8 +58,8 @@ router.post('/user/register', async (req,res) => {
 });
 
 // User Login route
-router.get('/user/login', async (req,res) => {
-   const user = await BlogPost.findOne({
+router.post('/login', (req,res) => {
+   const user = BlogPost.findOne({
       email: req.body.email,
       password: req.body.password,
    })

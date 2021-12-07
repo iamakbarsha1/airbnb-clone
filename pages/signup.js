@@ -5,6 +5,7 @@ import Image from "next/image";
 import login from './login';
 
 
+
 function signup() {
    const router = useRouter();
    const login = () => {
@@ -71,7 +72,7 @@ function signup() {
          password: password
       };
       axios({
-         url: "http://localhost:8080/api/user/register",
+         url: "http://localhost:8080/api/register",
          method: "POST",
          data: payload
       })
@@ -83,6 +84,7 @@ function signup() {
          .catch(() => {
             console.log("server error");
          });
+      router.push("/login");
    };
 
    // reset the inputs entered by the user
@@ -196,6 +198,7 @@ function signup() {
                            
                      </div>
                      <div className="md:ml-56 ml-24 md:block">
+                        
                               Already Registered ?<div className="cursor-pointer underline text-blue-600" onClick={login}>Login</div>  here
                      </div>
                   
