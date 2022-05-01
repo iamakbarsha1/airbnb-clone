@@ -1,17 +1,16 @@
-import Head from 'next/head'
-import Banner from '../components/Banner'
-import Header from '../components/Header'
-import SmallCard from '../components/SmallCard';
-import MediumCard from '../components/MediumCard';
-import LargeCard from '../components/LargeCard';
-import Footer from '../components/Footer';
-import { useRouter } from 'next/dist/client/router';
-import { useEffect } from 'react/cjs/react.development';
-import jwt from 'jsonwebtoken';
+import Head from "next/head";
+import Banner from "../components/Banner";
+import Header from "../components/Header";
+import SmallCard from "../components/SmallCard";
+import MediumCard from "../components/MediumCard";
+import LargeCard from "../components/LargeCard";
+import Footer from "../components/Footer";
+import { useRouter } from "next/dist/client/router";
+import { useEffect } from "react/cjs/react.development";
+import jwt from "jsonwebtoken";
 // import useHistory from "react-router-dom";
 
 export default function Home({ exploreData, cardsData }) {
-
   const router = useRouter();
   const indexPage = () => {
     router.push({
@@ -20,7 +19,7 @@ export default function Home({ exploreData, cardsData }) {
   };
   const login = () => {
     router.push({
-       pathname: "/login",
+      pathname: "/login",
     });
   };
 
@@ -69,17 +68,11 @@ export default function Home({ exploreData, cardsData }) {
         </section>
 
         <section>
-          <h2 className="font-semibold text-3xl pb-5 py-8">
-            Live Anywhere
-          </h2>
+          <h2 className="font-semibold text-3xl pb-5 py-8">Live Anywhere</h2>
 
           <div className="flex space-x-3 overflow-scroll scrollbar-hide p-3 scrollbar-hide">
             {cardsData?.map(({ img, title }) => (
-              <MediumCard
-                key={img}
-                img={img}
-                title={title}
-              />
+              <MediumCard key={img} img={img} title={title} />
             ))}
           </div>
         </section>
@@ -92,29 +85,26 @@ export default function Home({ exploreData, cardsData }) {
             buttonText="Get Inspired"
           />
         </div>
-
       </main>
 
       <Footer />
-
-
     </div>
-  )
+  );
 }
 
 export async function getStaticProps() {
-  const exploreData = await fetch("https://links.papareact.com/pyp").then(
-    res => res.json()
+  const exploreData = await fetch("https://jsonkeeper.com/b/7BHL").then((res) =>
+    res.json()
   );
 
-  const cardsData = await fetch("https://links.papareact.com/zp1").then(
-    res => res.json()
+  const cardsData = await fetch("https://links.papareact.com/zp1").then((res) =>
+    res.json()
   );
 
   return {
     props: {
       exploreData,
       cardsData,
-    }
-  }
+    },
+  };
 }
