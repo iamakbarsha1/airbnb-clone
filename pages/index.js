@@ -10,7 +10,7 @@ import { useEffect } from "react/cjs/react.development";
 import jwt from "jsonwebtoken";
 // import useHistory from "react-router-dom";
 
-export default function Home({ exploreData, cardsData }) {
+export default function Home() {
   const router = useRouter();
   const indexPage = () => {
     router.push({
@@ -22,6 +22,68 @@ export default function Home({ exploreData, cardsData }) {
       pathname: "/login",
     });
   };
+
+  const exploreData = [
+    {
+      img: "https://links.papareact.com/5j2",
+      location: "Thirunelveli",
+      distance: "9-hour drive",
+    },
+    {
+      img: "https://links.papareact.com/1to",
+      location: "Pulicat",
+      distance: "1-hour drive",
+    },
+    {
+      img: "https://links.papareact.com/40m",
+      location: "Bangalore",
+      distance: "7-hour drive",
+    },
+    {
+      img: "https://links.papareact.com/msp",
+      location: "Yelagiri",
+      distance: "4-hour drive",
+    },
+    {
+      img: "https://links.papareact.com/2k3",
+      location: "Mahaballipuram",
+      distance: "2-hour drive",
+    },
+    {
+      img: "https://links.papareact.com/ynx",
+      location: "Pondicherry",
+      distance: "3-hour drive",
+    },
+    {
+      img: "https://links.papareact.com/kji",
+      location: "Hydrebad",
+      distance: "7-hour drive",
+    },
+    {
+      img: "https://links.papareact.com/41m",
+      location: "Kochi",
+      distance: "13-hour drive",
+    },
+  ];
+
+  const cardsData = [
+    {
+      img: "https://links.papareact.com/2io",
+      title: "Outdoor getaways",
+    },
+    {
+      img: "https://links.papareact.com/q7j",
+      title: "Unique stays",
+    },
+    {
+      img: "https://links.papareact.com/s03",
+      title: "Entire homes",
+    },
+    {
+      img: "https://links.papareact.com/8ix",
+      title: "Pet allowed",
+    },
+  ];
 
   // const history = useHistory();
   // useEffect(() => {
@@ -93,18 +155,18 @@ export default function Home({ exploreData, cardsData }) {
 }
 
 export async function getStaticProps() {
-  const exploreData = await fetch("https://jsonkeeper.com/b/7BHL").then((res) =>
-    res.json()
-  );
+  // const exploreData = await fetch("https://jsonkeeper.com/b/7BHL").then((res) =>
+  //   res.json()
+  // );
 
-  const cardsData = await fetch("https://links.papareact.com/zp1").then((res) =>
-    res.json()
-  );
+  // const cardsData = await fetch("https://links.papareact.com/zp1").then((res) =>
+  //   res.json()
+  // );
 
   return {
     props: {
-      exploreData,
-      cardsData,
+      // exploreData,
+      // cardsData,
     },
   };
 }
