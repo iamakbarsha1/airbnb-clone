@@ -5,6 +5,14 @@ import moment from "moment"; //moment.js
 import InfoCard from "../components/InfoCard";
 import Map from "../components/Map";
 
+import one from "../public/img/search/1.jpeg";
+import two from "../public/img/search/2.jpeg";
+import three from "../public/img/search/3.jpeg";
+import four from "../public/img/search/4.jpeg";
+import five from "../public/img/search/5.jpeg";
+import six from "../public/img/search/6.jpeg";
+import seven from "../public/img/search/7.jpeg";
+
 function Search() {
   const router = useRouter();
   // ES6 Destructuring
@@ -16,7 +24,7 @@ function Search() {
 
   const searchResults = [
     {
-      img: "https://links.papareact.com/xqj",
+      img: one,
       location: "Private room in center of London",
       title: "Stay at this spacious Edwardian House",
       description:
@@ -28,7 +36,7 @@ function Search() {
       lat: 51.5421655,
     },
     {
-      img: "https://links.papareact.com/hz2",
+      img: two,
       location: "Private room in center of London",
       title: "Independant luxury studio apartment",
       description:
@@ -40,7 +48,7 @@ function Search() {
       lat: 51.48695,
     },
     {
-      img: "https://links.papareact.com/uz7",
+      img: three,
       location: "Private room in center of London",
       title: "London Studio Apartments",
       description:
@@ -52,7 +60,7 @@ function Search() {
       lat: 51.521916,
     },
     {
-      img: "https://links.papareact.com/6as",
+      img: four,
       location: "Private room in center of London",
       title: "30 mins to Oxford Street, Excel London",
       description:
@@ -64,7 +72,7 @@ function Search() {
       lat: 51.472618,
     },
     {
-      img: "https://links.papareact.com/xhc",
+      img: five,
       location: "Private room in center of London",
       title: "Spacious Peaceful Modern Bedroom",
       description:
@@ -76,7 +84,7 @@ function Search() {
       lat: 51.510794,
     },
     {
-      img: "https://links.papareact.com/pro",
+      img: six,
       location: "Private room in center of London",
       title: "The Blue Room In London",
       description:
@@ -88,7 +96,7 @@ function Search() {
       lat: 51.51401,
     },
     {
-      img: "https://links.papareact.com/8w2",
+      img: seven,
       location: "Private room in center of London",
       title: "5 Star Luxury Apartment",
       description:
@@ -101,8 +109,6 @@ function Search() {
     },
   ];
 
-  // console.log(router.query);
-
   return (
     <div>
       <Header placeholder={`${location} | ${range} | ${noOfGuests} guests`} />
@@ -112,11 +118,9 @@ function Search() {
           <p className=" text-xs md:text-xs lg:text-sm ">
             300+ stays · {range} · {noOfGuests} Guests{" "}
           </p>
-
           <h1 className="font-bold text-xl md:text-3xl lg:text-3xl text-gray-800 mt-1 mb-3 md:mt-2 md:mb-6 ">
             Stays in {location}
           </h1>
-
           <div className="hidden lg:inline-flex mb-6 font-medium space-x-3 text-gray-800 whitespace-nowrap">
             <p className="button">Cancellation Flexibility</p>
             <p className="button">Type of place</p>
@@ -124,7 +128,6 @@ function Search() {
             <p className="button">Rooms and Beds</p>
             <p className="button">More filters</p>
           </div>
-
           <div className="flex flex-col ">
             {searchResults.map(
               ({ img, location, title, description, star, price, total }) => (
@@ -142,12 +145,10 @@ function Search() {
             )}
           </div>
         </section>
-
         <section className="hidden lg:inline-flex xl:min-w-[600px]">
           <Map searchResults={searchResults} className="" />
         </section>
       </main>
-
       <Footer />
     </div>
   );
